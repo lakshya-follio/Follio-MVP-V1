@@ -91,7 +91,7 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user }) => {
             We support PDF and DOCX formats.
           </p>
           {user && (
-            <p className="text-sm text-blue-600 mt-2">
+            <p className="text-sm text-cyan-600 mt-2">
               Welcome, {user.name || user.email}
             </p>
           )}
@@ -103,7 +103,7 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user }) => {
             <div
               className={`border-2 border-dashed rounded-xl p-12 text-center transition-all duration-200 ${
                 dragActive
-                  ? 'border-blue-400 bg-blue-50'
+                  ? 'border-cyan-400 bg-cyan-50'
                   : 'border-gray-300 hover:border-gray-400'
               }`}
               onDragEnter={handleDrag}
@@ -113,10 +113,10 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user }) => {
             >
               <div className="flex flex-col items-center gap-4">
                 <div className={`p-4 rounded-full ${
-                  dragActive ? 'bg-blue-100' : 'bg-gray-100'
+                  dragActive ? 'bg-cyan-100' : 'bg-gray-100'
                 }`}>
                   <Upload className={`w-8 h-8 ${
-                    dragActive ? 'text-blue-600' : 'text-gray-400'
+                    dragActive ? 'text-cyan-600' : 'text-gray-400'
                   }`} />
                 </div>
                 
@@ -128,7 +128,7 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user }) => {
                     or click to browse files
                   </p>
                   
-                  <label className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 cursor-pointer">
+                  <label className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-6 py-3 rounded-lg font-medium hover:from-cyan-600 hover:to-teal-600 transition-all duration-200 cursor-pointer">
                     <Upload className="w-5 h-5" />
                     Choose File
                     <input
@@ -174,7 +174,7 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user }) => {
               <button
                 onClick={processUpload}
                 disabled={uploading}
-                className="mt-6 inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 disabled:opacity-50"
+                className="mt-6 inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-8 py-3 rounded-lg font-medium hover:from-cyan-600 hover:to-teal-600 transition-all duration-200 disabled:opacity-50"
               >
                 {uploading ? (
                   <>
@@ -201,8 +201,8 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user }) => {
         {/* Features Preview */}
         <div className="mt-12 grid md:grid-cols-3 gap-6">
           <div className="text-center p-6">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <Upload className="w-6 h-6 text-blue-600" />
+            <div className="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <Upload className="w-6 h-6 text-cyan-600" />
             </div>
             <h3 className="font-semibold text-gray-900 mb-2">Smart Parsing</h3>
             <p className="text-gray-600 text-sm">

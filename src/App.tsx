@@ -128,14 +128,14 @@ function App() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-cyan-50 to-teal-100">
         <LoadingSpinner size="large" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-teal-100">
       {currentPage === 'login' && <LoginPage onLogin={handleLogin} />}
       {currentPage === 'upload' && <UploadPage onUpload={handleUpload} user={user} />}
       {currentPage === 'parsed' && (

@@ -145,7 +145,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-16 h-16 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <h2 className="text-xl font-semibold text-gray-900 mb-2">Parsing your resume...</h2>
           <p className="text-gray-600">This may take a few moments</p>
         </div>
@@ -159,7 +159,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
         <div className="text-center">
           <h2 className="text-xl font-semibold text-gray-900 mb-2">Failed to parse resume</h2>
           <p className="text-gray-600 mb-4">Please try uploading a different file</p>
-          <button onClick={onBack} className="text-blue-600 hover:text-blue-700">
+          <button onClick={onBack} className="text-cyan-600 hover:text-cyan-700">
             Go back
           </button>
         </div>
@@ -189,7 +189,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
           </div>
           <button
             onClick={handleSave}
-            className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-200"
+            className="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-6 py-2 rounded-lg font-medium hover:from-cyan-600 hover:to-teal-600 transition-all duration-200"
           >
             <Save className="w-5 h-5" />
             Save Profile
@@ -241,7 +241,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
                         type="text"
                         value={parsedData.profile.name}
                         onChange={(e) => updateProfile('name', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none"
                       />
                     </div>
                     <div>
@@ -252,7 +252,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
                         type="text"
                         value={parsedData.profile.location}
                         onChange={(e) => updateProfile('location', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none"
                       />
                     </div>
                   </div>
@@ -276,7 +276,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
                         type="email"
                         value={parsedData.profile.email}
                         onChange={(e) => updateProfile('email', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none"
                       />
                     </div>
                     <div>
@@ -287,7 +287,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
                         type="tel"
                         value={parsedData.profile.phone}
                         onChange={(e) => updateProfile('phone', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none"
                       />
                     </div>
                   </div>
@@ -336,7 +336,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
                               type="text"
                               value={exp.company}
                               onChange={(e) => updateExperience(exp.id, 'company', e.target.value)}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none"
                             />
                           </div>
                           <div>
@@ -347,7 +347,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
                               type="text"
                               value={exp.role}
                               onChange={(e) => updateExperience(exp.id, 'role', e.target.value)}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none"
                             />
                           </div>
                         </div>
@@ -360,7 +360,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
                               type="date"
                               value={exp.startDate}
                               onChange={(e) => updateExperience(exp.id, 'startDate', e.target.value)}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none"
                             />
                           </div>
                           <div>
@@ -371,7 +371,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
                               type="date"
                               value={exp.endDate}
                               onChange={(e) => updateExperience(exp.id, 'endDate', e.target.value)}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none"
                             />
                           </div>
                         </div>
@@ -380,7 +380,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
                   </div>
                   <button
                     onClick={addExperience}
-                    className="mt-4 flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
+                    className="mt-4 flex items-center gap-2 text-cyan-600 hover:text-cyan-700 font-medium"
                   >
                     <Plus className="w-4 h-4" />
                     Add Experience
@@ -430,7 +430,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
                               type="text"
                               value={edu.school}
                               onChange={(e) => updateEducation(edu.id, 'school', e.target.value)}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none"
                             />
                           </div>
                           <div>
@@ -441,7 +441,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
                               type="text"
                               value={edu.degree}
                               onChange={(e) => updateEducation(edu.id, 'degree', e.target.value)}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none"
                             />
                           </div>
                         </div>
@@ -454,7 +454,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
                               type="date"
                               value={edu.startDate}
                               onChange={(e) => updateEducation(edu.id, 'startDate', e.target.value)}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none"
                             />
                           </div>
                           <div>
@@ -465,7 +465,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
                               type="date"
                               value={edu.endDate}
                               onChange={(e) => updateEducation(edu.id, 'endDate', e.target.value)}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none"
                             />
                           </div>
                         </div>
@@ -474,7 +474,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
                   </div>
                   <button
                     onClick={addEducation}
-                    className="mt-4 flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
+                    className="mt-4 flex items-center gap-2 text-cyan-600 hover:text-cyan-700 font-medium"
                   >
                     <Plus className="w-4 h-4" />
                     Add Education
@@ -505,12 +505,12 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
                     {parsedData.skills.map((skill, index) => (
                       <span
                         key={index}
-                        className="inline-flex items-center gap-1 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+                        className="inline-flex items-center gap-1 bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm"
                       >
                         {skill}
                         <button
                           onClick={() => removeSkill(index)}
-                          className="hover:bg-blue-200 rounded-full p-0.5"
+                          className="hover:bg-cyan-200 rounded-full p-0.5"
                         >
                           <X className="w-3 h-3" />
                         </button>
@@ -537,7 +537,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({
                           input.value = '';
                         }
                       }}
-                      className="flex items-center gap-1 bg-blue-100 text-blue-700 px-3 py-2 rounded-lg hover:bg-blue-200 transition-colors"
+                      className="flex items-center gap-1 bg-cyan-100 text-cyan-700 px-3 py-2 rounded-lg hover:bg-cyan-200 transition-colors"
                     >
                       <Plus className="w-4 h-4" />
                       Add

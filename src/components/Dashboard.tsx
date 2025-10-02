@@ -2,6 +2,7 @@ import { supabase } from '../App';
 import React from 'react';
 import { User, MapPin, Mail, Phone, Building, GraduationCap, Code, LogOut, CreditCard as Edit } from 'lucide-react';
 import type { User as UserType, ParsedResumeData } from '../App';
+import follioIcon from '../assets/follio-icon.svg';
 
 interface DashboardProps {
   user: UserType | null;
@@ -38,9 +39,9 @@ const Dashboard: React.FC<DashboardProps> = ({ user, parsedData, onLogout }) => 
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-cyan-50 to-teal-100">
         <div className="text-center">
-          <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-12 h-12 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <h2 className="text-xl font-semibold text-gray-900 mb-2">Loading your profile...</h2>
         </div>
       </div>
@@ -49,13 +50,13 @@ const Dashboard: React.FC<DashboardProps> = ({ user, parsedData, onLogout }) => 
 
   if (!profileData) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-cyan-50 to-teal-100">
         <div className="text-center">
           <h2 className="text-xl font-semibold text-gray-900 mb-2">No profile data found</h2>
           <p className="text-gray-600 mb-4">Please upload and parse your resume first.</p>
           <button 
             onClick={() => window.location.reload()}
-            className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-200"
+            className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-6 py-2 rounded-lg font-medium hover:from-cyan-600 hover:to-teal-600 transition-all duration-200"
           >
             Go to Upload
           </button>
@@ -71,9 +72,12 @@ const Dashboard: React.FC<DashboardProps> = ({ user, parsedData, onLogout }) => 
         <div className="max-w-6xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                Folio Dashboard
-              </h1>
+              <div className="flex items-center gap-3">
+                <img src={follioIcon} alt="Follio" className="w-8 h-8" />
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-500 to-teal-500 bg-clip-text text-transparent">
+                  Follio Dashboard
+                </h1>
+              </div>
               <p className="text-gray-600 mt-1">Welcome back, {user?.name || user?.email}</p>
             </div>
             <div className="flex items-center gap-4">
@@ -95,29 +99,29 @@ const Dashboard: React.FC<DashboardProps> = ({ user, parsedData, onLogout }) => 
 
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Profile Summary Card */}
-        <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl shadow-lg p-8 mb-8 text-white">
+        <div className="bg-gradient-to-br from-cyan-500 to-teal-600 rounded-xl shadow-lg p-8 mb-8 text-white">
           <div className="flex items-start gap-6">
             <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center">
               <User className="w-10 h-10" />
             </div>
             <div className="flex-1">
               <h2 className="text-3xl font-bold mb-2">{profileData.profile.name}</h2>
-              <p className="text-blue-100 text-lg mb-4">{profileData.profile.headline}</p>
+              <p className="text-cyan-100 text-lg mb-4">{profileData.profile.headline}</p>
               <div className="grid md:grid-cols-3 gap-4">
                 {profileData.profile.location && (
-                  <div className="flex items-center gap-2 text-blue-100">
+                  <div className="flex items-center gap-2 text-cyan-100">
                     <MapPin className="w-4 h-4" />
                     <span className="text-sm">{profileData.profile.location}</span>
                   </div>
                 )}
                 {profileData.profile.email && (
-                  <div className="flex items-center gap-2 text-blue-100">
+                  <div className="flex items-center gap-2 text-cyan-100">
                     <Mail className="w-4 h-4" />
                     <span className="text-sm">{profileData.profile.email}</span>
                   </div>
                 )}
                 {profileData.profile.phone && (
-                  <div className="flex items-center gap-2 text-blue-100">
+                  <div className="flex items-center gap-2 text-cyan-100">
                     <Phone className="w-4 h-4" />
                     <span className="text-sm">{profileData.profile.phone}</span>
                   </div>
@@ -131,8 +135,8 @@ const Dashboard: React.FC<DashboardProps> = ({ user, parsedData, onLogout }) => 
         <div className="grid md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <Building className="w-6 h-6 text-blue-600" />
+              <div className="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center">
+                <Building className="w-6 h-6 text-cyan-600" />
               </div>
               <div>
                 <div className="text-2xl font-bold text-gray-900">
@@ -176,14 +180,14 @@ const Dashboard: React.FC<DashboardProps> = ({ user, parsedData, onLogout }) => 
           {/* Experience Section */}
           <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <Building className="w-5 h-5 text-blue-600" />
+              <Building className="w-5 h-5 text-cyan-600" />
               Work Experience
             </h3>
             <div className="space-y-4">
               {profileData.experience.map((exp, index) => (
-                <div key={exp.id} className="border-l-4 border-blue-200 pl-4 pb-4">
+                <div key={exp.id} className="border-l-4 border-cyan-200 pl-4 pb-4">
                   <h4 className="font-medium text-gray-900">{exp.role}</h4>
-                  <p className="text-blue-600 font-medium">{exp.company}</p>
+                  <p className="text-cyan-600 font-medium">{exp.company}</p>
                   <p className="text-sm text-gray-500">
                     {exp.startDate && new Date(exp.startDate).toLocaleDateString()} - 
                     {exp.endDate ? new Date(exp.endDate).toLocaleDateString() : 'Present'}
@@ -224,7 +228,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, parsedData, onLogout }) => 
             {profileData.skills.map((skill, index) => (
               <span
                 key={index}
-                className="bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium border border-purple-200"
+                className="bg-gradient-to-r from-purple-100 to-cyan-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium border border-purple-200"
               >
                 {skill}
               </span>
