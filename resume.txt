@@ -1,0 +1,19 @@
+
+John Doe
+123 Main Street, Anytown, USA 12345 | (123) 456-7890 | john.doe@email.com
+
+Summary
+A highly motivated and experienced software developer with a passion for creating efficient and scalable applications.
+
+Experience
+Software Engineer at Tech Corp - Anytown, USA (2020 - Present)
+- Developed and maintained web applications using Python and Django.
+- Collaborated with cross-functional teams to define and ship new features.
+
+Education
+Bachelor of Science in Computer Science - University of Example (2016 - 2020)
+
+Skills
+- Programming Languages: Python, JavaScript, SQL
+- Frameworks: Django, React
+- Databases: PostgreSQL, MongoDB
