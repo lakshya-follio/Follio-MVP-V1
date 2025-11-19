@@ -16,13 +16,14 @@ import AppFooter from './layout/AppFooter';
 
 interface ParsedInfoPageProps {
   uploadedFile: File | null;
+  initialData: ParsedResumeData | null;
   onSave: (data: ParsedResumeData) => void;
   onBack: () => void;
 }
 
-const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, onSave, onBack }) => {
-  const [parsedData, setParsedData] = useState<ParsedResumeData | null>(null);
-  const [loading, setLoading] = useState(true);
+const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, initialData, onSave, onBack }) => {
+  const [parsedData, setParsedData] = useState<ParsedResumeData | null>(initialData);
+  const [loading, setLoading] = useState(!initialData);
   const [expandedSections, setExpandedSections] = useState({
     profile: true,
     experience: true,
@@ -32,7 +33,19 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, onSave, o
   const [skillInput, setSkillInput] = useState('');
 
   useEffect(() => {
+    if (initialData) {
+      setParsedData(initialData);
+      setLoading(false);
+    }
+  }, [initialData]);
+
+  useEffect(() => {
+    if (initialData) {
+      return;
+    }
+
     if (!uploadedFile) {
+      setLoading(false);
       return;
     }
 
@@ -62,7 +75,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, onSave, o
     return () => {
       isMounted = false;
     };
-  }, [uploadedFile]);
+  }, [uploadedFile, initialData]);
 
   const toggleSection = (section: keyof typeof expandedSections) => {
     setExpandedSections((prev) => ({

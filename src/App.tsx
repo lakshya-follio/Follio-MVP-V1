@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard';
 import { LoadingSpinner } from './components/ui/LoadingSpinner';
 import { Toaster } from './components/ui/Toaster';
 import { supabase, isSupabaseConfigured } from './utils/supabaseClient';
+import { parseResumeFile } from './utils/resumeParser';
 
 export interface User {
   id: string;
@@ -180,10 +181,19 @@ function App() {
     setCurrentPage('upload');
   };
 
-  const handleUpload = (file: File) => {
-    setUploadedFile(file);
-    setParsedData(null);
-    setCurrentPage('parsed');
+  const handleUpload = async (file: File) => {
+    try {
+      const parsed = await parseResumeFile(file);
+      setUploadedFile(file);
+      setParsedData(parsed);
+      setCurrentPage('parsed');
+    } catch (error) {
+      console.error('Resume parsing failed:', error);
+      const message = error instanceof Error && error.message
+        ? error.message
+        : 'We could not parse that resume. Please try another file.';
+      throw new Error(message);
+    }
   };
 
   const handleSave = async (data: ParsedResumeData) => {
@@ -268,6 +278,7 @@ function App() {
       {currentPage === 'parsed' && (
         <ParsedInfoPage
           uploadedFile={uploadedFile}
+          initialData={parsedData}
           onSave={handleSave}
           onBack={() => setCurrentPage('upload')}
         />

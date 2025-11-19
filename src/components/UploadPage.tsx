@@ -73,8 +73,13 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user }) => {
     if (!uploadedFile) return;
 
     setUploading(true);
+    setError('');
     try {
       await onUpload(uploadedFile);
+    } catch (error) {
+      console.error('Upload processing failed:', error);
+      const message = error instanceof Error ? error.message : 'We could not parse that resume. Please try a different file.';
+      setError(message);
     } finally {
       setUploading(false);
     }
