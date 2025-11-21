@@ -161,11 +161,10 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user }) => {
             </div>
             {!uploadedFile ? (
               <div
-                className={`rounded-2xl border-2 border-dashed p-10 text-center transition-all duration-200 ${
-                  dragActive
-                    ? 'border-cyan-400 bg-cyan-50/70'
-                    : 'border-slate-200/80 hover:border-cyan-200'
-                }`}
+                className={`rounded-2xl border-2 border-dashed p-10 text-center transition-all duration-200 ${dragActive
+                  ? 'border-cyan-400 bg-cyan-50/70'
+                  : 'border-slate-200/80 hover:border-cyan-200'
+                  }`}
                 onDragEnter={handleDrag}
                 onDragLeave={handleDrag}
                 onDragOver={handleDrag}
@@ -173,9 +172,8 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user }) => {
               >
                 <div className="flex flex-col items-center gap-4">
                   <div
-                    className={`rounded-full p-4 ${
-                      dragActive ? 'bg-cyan-100/80 text-cyan-600' : 'bg-slate-100 text-slate-500'
-                    }`}
+                    className={`rounded-full p-4 ${dragActive ? 'bg-cyan-100/80 text-cyan-600' : 'bg-slate-100 text-slate-500'
+                      }`}
                   >
                     <Upload className="h-8 w-8" />
                   </div>
@@ -188,7 +186,7 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user }) => {
                     Choose file
                     <input
                       type="file"
-                      className="hidden"
+                      // className="hidden" // MOCK: Unhide for testing
                       accept=".pdf,.docx,.doc"
                       onChange={handleFileInput}
                     />
