@@ -57,6 +57,7 @@ function App() {
     }
 
     let isMounted = true;
+    const client = supabase;
 
     const mapSupabaseUserToAppUser = (supabaseUser: SupabaseUser): User => ({
       id: supabaseUser.id,
@@ -65,7 +66,7 @@ function App() {
     });
 
     const fetchResumeData = async (supabaseUser: SupabaseUser): Promise<ParsedResumeData | null> => {
-      const { data, error: profileError } = await supabase
+      const { data, error: profileError } = await client
         .from('profiles')
         .select('resume_data')
         .eq('id', supabaseUser.id)
@@ -109,7 +110,7 @@ function App() {
 
     const bootstrapSession = async () => {
       try {
-        const { data: { session }, error } = await supabase.auth.getSession();
+        const { data: { session }, error } = await client.auth.getSession();
         if (error) {
           throw error;
         }
@@ -131,7 +132,7 @@ function App() {
       }
     };
 
-    const { data: authSubscription } = supabase.auth.onAuthStateChange(async (event, session) => {
+    const { data: authSubscription } = client.auth.onAuthStateChange(async (event, session) => {
       if (!isMounted) return;
 
       if (event === 'SIGNED_OUT' || !session?.user) {
