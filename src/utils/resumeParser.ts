@@ -99,10 +99,10 @@ const extractTextFromDocx = async (file: File): Promise<string> => {
 
   let documentEntry:
     | {
-        compression: number;
-        compressedSize: number;
-        offset: number;
-      }
+      compression: number;
+      compressedSize: number;
+      offset: number;
+    }
     | null = null;
 
   let cursor = centralDirectoryOffset;
@@ -326,48 +326,88 @@ const buildParsedResume = (text: string): ParsedResumeData => {
     experience: experience.length
       ? experience
       : [
-          {
-            id: '1',
-            company: 'Your Company',
-            role: 'Role',
-            startDate: '',
-            endDate: '',
-            highlights: ['Summarize your achievements']
-          }
-        ],
+        {
+          id: '1',
+          company: 'Your Company',
+          role: 'Role',
+          startDate: '',
+          endDate: '',
+          highlights: ['Summarize your achievements']
+        }
+      ],
     education: education.length
       ? education
       : [
-          {
-            id: '1',
-            school: 'University or Certification',
-            degree: 'Degree or Program',
-            startDate: '',
-            endDate: ''
-          }
-        ],
+        {
+          id: '1',
+          school: 'University or Certification',
+          degree: 'Degree or Program',
+          startDate: '',
+          endDate: ''
+        }
+      ],
     skills: skills.length ? skills : ['Collaboration', 'Problem solving', 'Leadership']
   };
 };
 
 export const parseResumeFile = async (file: File): Promise<ParsedResumeData> => {
-  const type = file.type.toLowerCase();
-  let textContent = '';
+  console.log('Using dummy resume data for demo purposes');
 
-  if (type === 'application/pdf') {
-    textContent = await extractTextFromPdf(file);
-  } else if (
-    type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
-    type === 'application/msword'
-  ) {
-    textContent = await extractTextFromDocx(file);
-  } else {
-    textContent = await file.text();
-  }
+  // Simulate a short delay to mimic parsing time
+  await new Promise(resolve => setTimeout(resolve, 1500));
 
-  if (!textContent.trim()) {
-    throw new Error('No readable content found');
-  }
-
-  return buildParsedResume(textContent);
+  return {
+    profile: {
+      name: 'Alex Morgan',
+      headline: 'Senior Product Designer',
+      location: 'San Francisco, CA',
+      email: 'alex.morgan@example.com',
+      phone: '+1 (555) 123-4567'
+    },
+    experience: [
+      {
+        id: '1',
+        company: 'TechFlow Inc.',
+        role: 'Senior Product Designer',
+        startDate: '2021',
+        endDate: 'Present',
+        highlights: [
+          'Led the redesign of the core product interface, improving user engagement by 40%',
+          'Established a comprehensive design system used across 5 different product lines',
+          'Mentored junior designers and conducted weekly design critiques'
+        ]
+      },
+      {
+        id: '2',
+        company: 'Creative Solutions',
+        role: 'UX Designer',
+        startDate: '2018',
+        endDate: '2021',
+        highlights: [
+          'Collaborated with product managers to define user requirements and flows',
+          'Conducted user research and usability testing to validate design decisions',
+          'Designed mobile-first interfaces for e-commerce clients'
+        ]
+      }
+    ],
+    education: [
+      {
+        id: '1',
+        school: 'California College of the Arts',
+        degree: 'Bachelor of Fine Arts in Interaction Design',
+        startDate: '2014',
+        endDate: '2018'
+      }
+    ],
+    skills: [
+      'Figma',
+      'Prototyping',
+      'User Research',
+      'Design Systems',
+      'HTML/CSS',
+      'Agile Methodology',
+      'Adobe Creative Suite',
+      'Wireframing'
+    ]
+  };
 };

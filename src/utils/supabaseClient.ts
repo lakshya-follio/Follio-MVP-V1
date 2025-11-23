@@ -16,7 +16,11 @@ export const supabase: SupabaseClient | null = isSupabaseConfigured
   : null;
 
 if (!isSupabaseConfigured) {
+  const missingVars = [];
+  if (!supabaseUrl) missingVars.push('VITE_SUPABASE_URL');
+  if (!supabaseKey) missingVars.push('VITE_SUPABASE_ANON_KEY');
+
   console.warn(
-    'Supabase environment variables are not configured. Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to connect the app.'
+    `Supabase environment variables are not configured. Missing: ${missingVars.join(', ')}. Set these variables to connect the app.`
   );
 }
