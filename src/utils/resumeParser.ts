@@ -406,6 +406,10 @@ export const getDummyResumeData = (): ParsedResumeData => ({
 });
 
 export const parseResumeFile = async (file: File): Promise<ParsedResumeData> => {
+  // For now, we'll bypass the actual parsing to ensure we always move to the next step with valid data.
+  // This is useful for testing the UI flow without relying on the parser's accuracy.
+
+  /* 
   try {
     let text = '';
     if (file.type === 'application/pdf') {
@@ -423,11 +427,12 @@ export const parseResumeFile = async (file: File): Promise<ParsedResumeData> => 
   } catch (error) {
     console.warn('Resume parsing failed, falling back to dummy data:', error);
   }
+  */
 
-  console.log('Using dummy resume data for demo purposes');
+  console.log('Using dummy resume data (parsing bypassed)');
 
   // Simulate a short delay to mimic parsing time
-  await new Promise(resolve => setTimeout(resolve, 1500));
+  await new Promise(resolve => setTimeout(resolve, 1000));
 
   return getDummyResumeData();
 };
