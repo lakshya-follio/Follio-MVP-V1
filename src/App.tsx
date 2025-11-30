@@ -42,9 +42,10 @@ export interface ParsedResumeData {
 }
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'login' | 'upload' | 'parsed' | 'dashboard'>('login');
+  const [currentPage, setCurrentPage] = useState<'login' | 'upload' | 'parsed' | 'dashboard'>('upload');
   const [user, setUser] = useState<User | null>(null);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [pendingFile, setPendingFile] = useState<File | null>(null);
   const [parsedData, setParsedData] = useState<ParsedResumeData | null>(null);
   const [loading, setLoading] = useState(true);
   const [configError, setConfigError] = useState<string | null>(null);
@@ -102,10 +103,8 @@ function App() {
       if (resumeData) {
         setParsedData(resumeData);
         setCurrentPage('dashboard');
-      } else {
-        setParsedData(null);
-        setCurrentPage('upload');
       }
+      // Note: We don't force 'upload' here if no data, to respect the initial state or pending actions
     };
 
     const bootstrapSession = async () => {
@@ -138,7 +137,8 @@ function App() {
       if (event === 'SIGNED_OUT' || !session?.user) {
         setUser(null);
         setParsedData(null);
-        setCurrentPage('login');
+        // Don't redirect to login on sign out, let them browse
+        setCurrentPage('upload');
         return;
       }
 
@@ -156,10 +156,8 @@ function App() {
           if (resumeData) {
             setParsedData(resumeData);
             setCurrentPage('dashboard');
-          } else {
-            setParsedData(null);
-            setCurrentPage('upload');
           }
+          // If no resume data, stay on current page (likely upload)
         } catch (profileError) {
           console.error('Profile fetch error:', profileError);
           if (isMounted) {
@@ -179,10 +177,21 @@ function App() {
 
   const handleLogin = (userData: User) => {
     setUser(userData);
-    setCurrentPage('upload');
+    if (pendingFile) {
+      handleUpload(pendingFile);
+      setPendingFile(null);
+    } else {
+      setCurrentPage('upload');
+    }
   };
 
   const handleUpload = async (file: File) => {
+    if (!user) {
+      setPendingFile(file);
+      setCurrentPage('login');
+      return;
+    }
+
     try {
       const parsed = await parseResumeFile(file);
       setUploadedFile(file);

@@ -13,7 +13,7 @@ const decompressWithStream = async (data: Uint8Array, format: 'deflate' | 'defla
 
   const stream = new DecompressionStream(format);
   const writer = stream.writable.getWriter();
-  await writer.write(data);
+  await writer.write(data as unknown as BufferSource);
   await writer.close();
 
   const reader = stream.readable.getReader();
@@ -351,6 +351,24 @@ const buildParsedResume = (text: string): ParsedResumeData => {
 };
 
 export const parseResumeFile = async (file: File): Promise<ParsedResumeData> => {
+  try {
+    let text = '';
+    if (file.type === 'application/pdf') {
+      text = await extractTextFromPdf(file);
+    } else if (
+      file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
+      file.name.endsWith('.docx')
+    ) {
+      text = await extractTextFromDocx(file);
+    }
+
+    if (text) {
+      return buildParsedResume(text);
+    }
+  } catch (error) {
+    console.warn('Resume parsing failed, falling back to dummy data:', error);
+  }
+
   console.log('Using dummy resume data for demo purposes');
 
   // Simulate a short delay to mimic parsing time
