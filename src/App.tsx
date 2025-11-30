@@ -262,7 +262,7 @@ function App() {
 
   if (configError) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-[#F4FBFF] via-white to-[#E9F5FF] p-6 text-center">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-secondary p-6 text-center">
         <div className="max-w-xl rounded-3xl border border-red-200/60 bg-white/90 p-10 shadow-xl shadow-red-200/30 backdrop-blur">
           <h1 className="text-2xl font-semibold text-red-600">Configuration required</h1>
           <p className="mt-4 text-sm text-slate-600">{configError}</p>
@@ -277,43 +277,42 @@ function App() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-[#F4FBFF] via-white to-[#E9F5FF]">
+      <div className="flex min-h-screen items-center justify-center bg-secondary">
         <LoadingSpinner size="large" />
       </div>
     );
   }
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F4FBFF] via-white to-[#E9F5FF]">
-      {currentPage === 'login' && (
-        <LoginPage
-          onLogin={handleLogin}
-        />
-      )}
-      {currentPage === 'home' && (
-        <HomePage
-          onUpload={handleUpload}
-          user={user}
-          onLoginClick={() => setCurrentPage('login')}
-        />
-      )}
-      {currentPage === 'parsed' && (
-        <ParsedInfoPage
-          uploadedFile={uploadedFile}
-          initialData={parsedData}
-          onSave={handleSave}
-          onBack={() => setCurrentPage('home')}
-        />
-      )}
-      {currentPage === 'dashboard' && (
-        <Dashboard
-          user={user}
-          parsedData={parsedData}
-          onLogout={handleLogout}
-        />
-      )}
-      <Toaster />
-    </div>
+  <div className="min-h-screen bg-secondary text-primary font-sans selection:bg-accent/30">
+    {currentPage === 'login' && (
+      <LoginPage
+        onLogin={handleLogin}
+      />
+    )}
+    {currentPage === 'home' && (
+      <HomePage
+        onUpload={handleUpload}
+        user={user}
+        onLoginClick={() => setCurrentPage('login')}
+      />
+    )}
+    {currentPage === 'parsed' && (
+      <ParsedInfoPage
+        uploadedFile={uploadedFile}
+        initialData={parsedData}
+        onSave={handleSave}
+        onBack={() => setCurrentPage('home')}
+      />
+    )}
+    {currentPage === 'dashboard' && (
+      <Dashboard
+        user={user}
+        parsedData={parsedData}
+        onLogout={handleLogout}
+      />
+    )}
+    <Toaster />
+  </div>
   );
 }
 

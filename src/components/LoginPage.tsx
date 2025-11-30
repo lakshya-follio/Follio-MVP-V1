@@ -85,17 +85,17 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F5FBFF] via-white to-[#ECF8FF] text-slate-900 flex flex-col">
+    <div className="min-h-screen bg-secondary text-primary font-sans selection:bg-accent/30 flex flex-col">
       <BrandHeader subdued />
 
-      <main className="flex-1 flex items-center justify-center px-4 py-12">
+      <main className="flex-1 flex items-center justify-center px-4 py-12 animate-fade-in">
         <div className="w-full max-w-md">
-          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-lg">
-            <div className="mb-8 text-center">
-              <h3 className="text-2xl font-semibold text-slate-900">
+          <div className="rounded-3xl bg-surface p-10 shadow-sm ring-1 ring-primary/5">
+            <div className="mb-10 text-center">
+              <h3 className="text-3xl font-serif font-medium text-primary">
                 {isLogin ? 'Welcome back' : 'Create your account'}
               </h3>
-              <p className="mt-2 text-sm text-slate-600">
+              <p className="mt-3 text-base text-primary/60 font-light">
                 {isLogin
                   ? 'Sign in to continue to your portfolio.'
                   : 'Sign up to save your progress and publish.'}
@@ -103,16 +103,16 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             </div>
 
             {error && (
-              <div className="mb-6 rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+              <div className="mb-8 rounded-xl bg-red-50 p-4 text-sm text-red-600 text-center">
                 {error}
               </div>
             )}
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               <button
                 onClick={() => handleSocialAuth('google')}
                 disabled={loading}
-                className="flex w-full items-center justify-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
+                className="flex w-full items-center justify-center gap-3 rounded-xl border border-primary/10 bg-white px-4 py-3.5 text-sm font-medium text-primary transition-all hover:bg-secondary hover:border-primary/20 disabled:opacity-50"
               >
                 <svg className="h-5 w-5" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -126,7 +126,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
               <button
                 onClick={() => handleSocialAuth('linkedin_oidc')}
                 disabled={loading}
-                className="flex w-full items-center justify-center gap-3 rounded-xl bg-[#0077B5] px-4 py-3 text-sm font-medium text-white transition hover:bg-[#005f8d] disabled:cursor-not-allowed disabled:opacity-60"
+                className="flex w-full items-center justify-center gap-3 rounded-xl bg-[#0077B5] px-4 py-3.5 text-sm font-medium text-white transition-all hover:bg-[#00669c] disabled:opacity-50"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -135,22 +135,22 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
               </button>
             </div>
 
-            <div className="my-6 flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-slate-400">
-              <span className="h-px flex-1 bg-slate-200" />
+            <div className="my-8 flex items-center gap-3 text-xs font-medium uppercase tracking-widest text-primary/30">
+              <span className="h-px flex-1 bg-primary/10" />
               <span>or</span>
-              <span className="h-px flex-1 bg-slate-200" />
+              <span className="h-px flex-1 bg-primary/10" />
             </div>
 
-            <form onSubmit={handleEmailAuth} className="space-y-4">
+            <form onSubmit={handleEmailAuth} className="space-y-5">
               <div>
-                <label className="mb-2 block text-sm font-medium text-slate-700">Email</label>
+                <label className="mb-2 block text-sm font-medium text-primary/80">Email</label>
                 <div className="relative">
-                  <Mail className="pointer-events-none absolute left-3 top-3 h-5 w-5 text-slate-400" />
+                  <Mail className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-primary/30" />
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-10 py-3 text-sm text-slate-900 outline-none transition focus:border-cyan-500 focus:bg-white focus:ring-2 focus:ring-cyan-100"
+                    className="w-full rounded-xl border border-primary/10 bg-secondary/50 px-11 py-3.5 text-sm text-primary outline-none transition-all focus:border-primary/30 focus:bg-white focus:ring-0"
                     placeholder="Enter your email"
                     required
                   />
@@ -158,12 +158,12 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
               </div>
 
               <div>
-                <label className="mb-2 block text-sm font-medium text-slate-700">Password</label>
+                <label className="mb-2 block text-sm font-medium text-primary/80">Password</label>
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-cyan-500 focus:bg-white focus:ring-2 focus:ring-cyan-100"
+                  className="w-full rounded-xl border border-primary/10 bg-secondary/50 px-4 py-3.5 text-sm text-primary outline-none transition-all focus:border-primary/30 focus:bg-white focus:ring-0"
                   placeholder="Enter your password"
                   required
                   minLength={6}
@@ -173,23 +173,23 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
               <button
                 type="submit"
                 disabled={loading}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-500/30 transition hover:-translate-y-0.5 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60"
+                className="group flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-4 text-sm font-medium text-white transition-all hover:bg-primary/90 hover:scale-[1.02] disabled:opacity-50"
               >
                 {loading ? (
-                  <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                  <div className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
                 ) : (
                   <>
                     {isLogin ? 'Sign in' : 'Create account'}
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </>
                 )}
               </button>
             </form>
 
-            <div className="mt-6 text-center text-sm">
+            <div className="mt-8 text-center text-sm">
               <button
                 onClick={() => setIsLogin(!isLogin)}
-                className="font-semibold text-cyan-600 transition hover:text-cyan-700"
+                className="font-medium text-primary/60 transition hover:text-primary"
               >
                 {isLogin ? "Don't have an account? Sign up" : 'Already have an account? Sign in'}
               </button>
