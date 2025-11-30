@@ -10,24 +10,26 @@ export const BrandHeader: React.FC<BrandHeaderProps> = ({ action, subdued = fals
   return (
     <header
       className={[
-        'w-full',
-        subdued ? 'bg-white/70 backdrop-blur border-b border-slate-200/70' : 'bg-white border-b border-slate-200',
+        'sticky top-0 z-50 w-full transition-all duration-300',
+        subdued
+          ? 'bg-white/80 backdrop-blur-md border-b border-slate-200/60 shadow-sm shadow-cyan-500/5'
+          : 'bg-white/90 backdrop-blur-md border-b border-slate-200/60 shadow-sm',
         className
       ]
         .filter(Boolean)
         .join(' ')}
     >
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-5">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 via-teal-500 to-indigo-500 text-lg font-semibold text-white shadow-md shadow-cyan-500/30">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-5">
+        <div className="flex items-center gap-3.5">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 via-teal-500 to-indigo-500 text-xl font-bold text-white shadow-lg shadow-cyan-500/20 ring-1 ring-white/20">
             F
           </div>
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-500">Follio</p>
-            <p className="text-base font-semibold text-slate-900">Portfolio Experience Platform</p>
+            <p className="text-sm font-bold uppercase tracking-widest text-cyan-600">Follio</p>
+            <p className="text-[15px] font-medium text-slate-600">Portfolio Experience Platform</p>
           </div>
         </div>
-        {action && <div className="flex items-center gap-3 text-sm text-slate-600">{action}</div>}
+        {action && <div className="flex items-center gap-4 text-sm font-medium text-slate-600">{action}</div>}
       </div>
     </header>
   );
