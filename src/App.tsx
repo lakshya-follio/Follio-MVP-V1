@@ -7,7 +7,7 @@ import Dashboard from './components/Dashboard';
 import { LoadingSpinner } from './components/ui/LoadingSpinner';
 import { Toaster } from './components/ui/Toaster';
 import { supabase, isSupabaseConfigured } from './utils/supabaseClient';
-import { parseResumeFile } from './utils/resumeParser';
+import { parseResumeFile, getDummyResumeData } from './utils/resumeParser';
 
 export interface User {
   id: string;
@@ -191,6 +191,15 @@ function App() {
     }
   };
 
+  const handleDemoLoad = () => {
+    const dummyData = getDummyResumeData();
+    setParsedData(dummyData);
+    // Create a dummy file object for display purposes
+    const dummyFile = new File([''], 'demo-resume.pdf', { type: 'application/pdf' });
+    setUploadedFile(dummyFile);
+    setCurrentPage('parsed');
+  };
+
   const handleUpload = async (file: File) => {
     if (!user) {
       setPendingFile(file);
@@ -293,6 +302,7 @@ function App() {
       {currentPage === 'home' && (
         <HomePage
           onUpload={handleUpload}
+          onDemoLoad={handleDemoLoad}
           user={user}
           onLoginClick={() => setCurrentPage('login')}
         />

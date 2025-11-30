@@ -6,11 +6,12 @@ import AppFooter from './layout/AppFooter';
 
 interface HomePageProps {
     onUpload: (file: File) => Promise<void> | void;
+    onDemoLoad: () => void;
     user: User | null;
     onLoginClick: () => void;
 }
 
-const HomePage: React.FC<HomePageProps> = ({ onUpload, user, onLoginClick }) => {
+const HomePage: React.FC<HomePageProps> = ({ onUpload, onDemoLoad, user, onLoginClick }) => {
     const [dragActive, setDragActive] = useState(false);
     const [uploadedFile, setUploadedFile] = useState<File | null>(null);
     const [uploading, setUploading] = useState(false);
@@ -217,6 +218,20 @@ const HomePage: React.FC<HomePageProps> = ({ onUpload, user, onLoginClick }) => 
                                     </div>
                                     <h3 className="text-lg font-medium text-primary">Drag and drop your resume</h3>
                                     <p className="mt-2 text-sm text-primary/50">or click to browse</p>
+                                    <p className="mt-2 text-xs text-primary/40">PDF, DOCX up to 10MB</p>
+
+                                    <div className="mt-4">
+                                        <button
+                                            type="button"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                onDemoLoad();
+                                            }}
+                                            className="text-xs font-medium text-primary/40 hover:text-primary transition-colors underline decoration-primary/20 hover:decoration-primary"
+                                        >
+                                            Try with demo data
+                                        </button>
+                                    </div>
 
                                     <label className="absolute inset-0 cursor-pointer">
                                         <input

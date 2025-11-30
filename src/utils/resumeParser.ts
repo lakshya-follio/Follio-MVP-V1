@@ -350,6 +350,61 @@ const buildParsedResume = (text: string): ParsedResumeData => {
   };
 };
 
+export const getDummyResumeData = (): ParsedResumeData => ({
+  profile: {
+    name: 'Alex Morgan',
+    headline: 'Senior Product Designer',
+    location: 'San Francisco, CA',
+    email: 'alex.morgan@example.com',
+    phone: '+1 (555) 123-4567'
+  },
+  experience: [
+    {
+      id: '1',
+      company: 'TechFlow Inc.',
+      role: 'Senior Product Designer',
+      startDate: '2021',
+      endDate: 'Present',
+      highlights: [
+        'Led the redesign of the core product interface, improving user engagement by 40%',
+        'Established a comprehensive design system used across 5 different product lines',
+        'Mentored junior designers and conducted weekly design critiques'
+      ]
+    },
+    {
+      id: '2',
+      company: 'Creative Solutions',
+      role: 'UX Designer',
+      startDate: '2018',
+      endDate: '2021',
+      highlights: [
+        'Collaborated with product managers to define user requirements and flows',
+        'Conducted user research and usability testing to validate design decisions',
+        'Designed mobile-first interfaces for e-commerce clients'
+      ]
+    }
+  ],
+  education: [
+    {
+      id: '1',
+      school: 'California College of the Arts',
+      degree: 'Bachelor of Fine Arts in Interaction Design',
+      startDate: '2014',
+      endDate: '2018'
+    }
+  ],
+  skills: [
+    'Figma',
+    'Prototyping',
+    'User Research',
+    'Design Systems',
+    'HTML/CSS',
+    'Agile Methodology',
+    'Adobe Creative Suite',
+    'Wireframing'
+  ]
+});
+
 export const parseResumeFile = async (file: File): Promise<ParsedResumeData> => {
   try {
     let text = '';
@@ -374,58 +429,5 @@ export const parseResumeFile = async (file: File): Promise<ParsedResumeData> => 
   // Simulate a short delay to mimic parsing time
   await new Promise(resolve => setTimeout(resolve, 1500));
 
-  return {
-    profile: {
-      name: 'Alex Morgan',
-      headline: 'Senior Product Designer',
-      location: 'San Francisco, CA',
-      email: 'alex.morgan@example.com',
-      phone: '+1 (555) 123-4567'
-    },
-    experience: [
-      {
-        id: '1',
-        company: 'TechFlow Inc.',
-        role: 'Senior Product Designer',
-        startDate: '2021',
-        endDate: 'Present',
-        highlights: [
-          'Led the redesign of the core product interface, improving user engagement by 40%',
-          'Established a comprehensive design system used across 5 different product lines',
-          'Mentored junior designers and conducted weekly design critiques'
-        ]
-      },
-      {
-        id: '2',
-        company: 'Creative Solutions',
-        role: 'UX Designer',
-        startDate: '2018',
-        endDate: '2021',
-        highlights: [
-          'Collaborated with product managers to define user requirements and flows',
-          'Conducted user research and usability testing to validate design decisions',
-          'Designed mobile-first interfaces for e-commerce clients'
-        ]
-      }
-    ],
-    education: [
-      {
-        id: '1',
-        school: 'California College of the Arts',
-        degree: 'Bachelor of Fine Arts in Interaction Design',
-        startDate: '2014',
-        endDate: '2018'
-      }
-    ],
-    skills: [
-      'Figma',
-      'Prototyping',
-      'User Research',
-      'Design Systems',
-      'HTML/CSS',
-      'Agile Methodology',
-      'Adobe Creative Suite',
-      'Wireframing'
-    ]
-  };
+  return getDummyResumeData();
 };
