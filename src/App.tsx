@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import type { Session, User as SupabaseUser } from '@supabase/supabase-js';
 import LoginPage from './components/LoginPage';
-import UploadPage from './components/UploadPage';
+import HomePage from './components/HomePage';
 import ParsedInfoPage from './components/ParsedInfoPage';
 import Dashboard from './components/Dashboard';
 import { LoadingSpinner } from './components/ui/LoadingSpinner';
@@ -42,7 +42,7 @@ export interface ParsedResumeData {
 }
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'login' | 'upload' | 'parsed' | 'dashboard'>('upload');
+  const [currentPage, setCurrentPage] = useState<'home' | 'login' | 'parsed' | 'dashboard'>('home');
   const [user, setUser] = useState<User | null>(null);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [pendingFile, setPendingFile] = useState<File | null>(null);
@@ -138,7 +138,7 @@ function App() {
         setUser(null);
         setParsedData(null);
         // Don't redirect to login on sign out, let them browse
-        setCurrentPage('upload');
+        setCurrentPage('home');
         return;
       }
 
@@ -181,7 +181,13 @@ function App() {
       handleUpload(pendingFile);
       setPendingFile(null);
     } else {
-      setCurrentPage('upload');
+      // If they logged in without a pending file, they might have data or not.
+      // The auth listener handles fetching data and redirecting to dashboard if exists.
+      // If no data, they stay on home/upload.
+      // But here we might want to ensure they go to home if they just logged in manually?
+      // Actually, the auth listener handles 'dashboard' redirect if data exists.
+      // If no data, we should probably show 'home' (which has upload).
+      setCurrentPage('home');
     }
   };
 
@@ -251,7 +257,7 @@ function App() {
     setUser(null);
     setUploadedFile(null);
     setParsedData(null);
-    setCurrentPage('login');
+    setCurrentPage('home');
   };
 
   if (configError) {
@@ -284,13 +290,19 @@ function App() {
           onLogin={handleLogin}
         />
       )}
-      {currentPage === 'upload' && <UploadPage onUpload={handleUpload} user={user} />}
+      {currentPage === 'home' && (
+        <HomePage
+          onUpload={handleUpload}
+          user={user}
+          onLoginClick={() => setCurrentPage('login')}
+        />
+      )}
       {currentPage === 'parsed' && (
         <ParsedInfoPage
           uploadedFile={uploadedFile}
           initialData={parsedData}
           onSave={handleSave}
-          onBack={() => setCurrentPage('upload')}
+          onBack={() => setCurrentPage('home')}
         />
       )}
       {currentPage === 'dashboard' && (
