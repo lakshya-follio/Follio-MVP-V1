@@ -153,11 +153,29 @@ function App() {
             return;
           }
 
+          // If there's a pending file to process, handle it first
+          if (pendingFile) {
+            try {
+              const parsed = await parseResumeFile(pendingFile);
+              setUploadedFile(pendingFile);
+              setParsedData(parsed);
+              setPendingFile(null);
+              setCurrentPage('parsed');
+              return; // Exit early since we're going to parsed page
+            } catch (parseError) {
+              console.error('Resume parsing failed:', parseError);
+              setPendingFile(null);
+              // Fall through to normal logic
+            }
+          }
+
           if (resumeData) {
             setParsedData(resumeData);
             setCurrentPage('dashboard');
+          } else {
+            // No existing resume data and no pending file - stay on upload/home page
+            setCurrentPage('home');
           }
-          // If no resume data, stay on current page (likely upload)
         } catch (profileError) {
           console.error('Profile fetch error:', profileError);
           if (isMounted) {
@@ -176,19 +194,9 @@ function App() {
   }, []);
 
   const handleLogin = (userData: User) => {
-    setUser(userData);
-    if (pendingFile) {
-      handleUpload(pendingFile);
-      setPendingFile(null);
-    } else {
-      // If they logged in without a pending file, they might have data or not.
-      // The auth listener handles fetching data and redirecting to dashboard if exists.
-      // If no data, they stay on home/upload.
-      // But here we might want to ensure they go to home if they just logged in manually?
-      // Actually, the auth listener handles 'dashboard' redirect if data exists.
-      // If no data, we should probably show 'home' (which has upload).
-      setCurrentPage('home');
-    }
+    // The auth listener will handle setting the user and fetching data
+    // We just need to ensure the pending file is available for the listener to process
+    // Don't manually set user or redirect here - let the auth listener handle it
   };
 
   const handleDemoLoad = () => {
