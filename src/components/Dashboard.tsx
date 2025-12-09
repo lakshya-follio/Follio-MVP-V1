@@ -53,14 +53,14 @@ const Dashboard: React.FC<DashboardProps> = ({ user, parsedData, onLogout }) => 
   const headerAction = (
     <div className="flex items-center gap-3">
       {user && (
-        <div className="hidden items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-4 py-2 text-sm text-slate-600 shadow-sm sm:flex">
+        <div className="hidden items-center gap-2 rounded-xl border border-primary/10 bg-white px-4 py-2 text-sm text-primary sm:flex">
           Signed in as
-          <span className="font-semibold text-slate-900">{user.name || user.email}</span>
+          <span className="font-medium text-primary">{user.name || user.email}</span>
         </div>
       )}
       <button
         onClick={onLogout}
-        className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50/80 px-4 py-2 text-sm font-semibold text-red-600 transition hover:bg-red-100"
+        className="inline-flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-2 text-sm font-medium text-red-600 transition-all hover:bg-red-100"
       >
         <LogOut className="h-4 w-4" />
         Logout
@@ -70,13 +70,13 @@ const Dashboard: React.FC<DashboardProps> = ({ user, parsedData, onLogout }) => 
 
   if (loading) {
     return (
-      <div className="flex min-h-screen flex-col bg-gradient-to-br from-blue-50 via-white to-sky-100">
+      <div className="flex min-h-screen flex-col bg-secondary">
         <BrandHeader subdued action={headerAction} />
-        <div className="flex flex-1 items-center justify-center px-4 py-16">
-          <div className="rounded-3xl border border-slate-200/70 bg-white/80 p-10 text-center shadow-lg shadow-blue-500/15">
-            <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-4 border-blue-500 border-t-transparent" />
-            <h2 className="text-xl font-semibold text-slate-900">Loading your profile...</h2>
-            <p className="mt-2 text-sm text-slate-500">We are fetching your saved Follio details.</p>
+        <div className="flex flex-1 items-center justify-center px-4 py-16 animate-fade-in">
+          <div className="rounded-3xl bg-surface p-10 text-center shadow-sm ring-1 ring-primary/5">
+            <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-4 border-primary/20 border-t-primary" />
+            <h2 className="text-xl font-serif font-medium text-primary">Loading your profile...</h2>
+            <p className="mt-2 text-sm text-primary/60">We are fetching your saved Follio details.</p>
           </div>
         </div>
         <AppFooter />
@@ -86,17 +86,17 @@ const Dashboard: React.FC<DashboardProps> = ({ user, parsedData, onLogout }) => 
 
   if (!profileData) {
     return (
-      <div className="flex min-h-screen flex-col bg-gradient-to-br from-blue-50 via-white to-sky-100">
+      <div className="flex min-h-screen flex-col bg-secondary">
         <BrandHeader subdued action={headerAction} />
-        <div className="flex flex-1 items-center justify-center px-4 py-16">
-          <div className="max-w-md rounded-3xl border border-slate-200/70 bg-white/80 p-10 text-center shadow-lg shadow-blue-500/15">
-            <h2 className="text-2xl font-semibold text-slate-900">Your Follio is almost ready</h2>
-            <p className="mt-3 text-sm text-slate-600">
+        <div className="flex flex-1 items-center justify-center px-4 py-16 animate-fade-in">
+          <div className="max-w-md rounded-3xl bg-surface p-10 text-center shadow-sm ring-1 ring-primary/5">
+            <h2 className="text-2xl font-serif font-medium text-primary">Your Follio is almost ready</h2>
+            <p className="mt-3 text-sm text-primary/60">
               Upload your resume to unlock the personalized dashboard and publishing tools.
             </p>
             <button
               onClick={() => window.location.reload()}
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:-translate-y-0.5 hover:shadow-xl"
+              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-medium text-white transition-all hover:bg-primary/90 hover:scale-[1.02]"
             >
               Begin upload
               <ArrowRight className="h-4 w-4" />
@@ -109,21 +109,21 @@ const Dashboard: React.FC<DashboardProps> = ({ user, parsedData, onLogout }) => 
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-br from-blue-50 via-white to-sky-100 text-slate-900">
+    <div className="flex min-h-screen flex-col bg-secondary text-primary font-sans selection:bg-accent/30">
       <BrandHeader subdued action={headerAction} />
-      <main className="mx-auto w-full max-w-7xl flex-1 px-6 py-24">
+      <main className="mx-auto w-full max-w-7xl flex-1 px-6 py-24 animate-fade-in">
         <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="rounded-[2.5rem] border border-slate-200/60 bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-500 p-12 text-white shadow-2xl shadow-blue-500/30 ring-1 ring-white/20">
+          <div className="rounded-3xl bg-primary p-12 text-white shadow-sm ring-1 ring-white/10">
             <div className="flex flex-col gap-8 md:flex-row md:items-start">
-              <div className="flex h-24 w-24 items-center justify-center rounded-3xl bg-white/15 text-white shadow-inner shadow-white/10 backdrop-blur-sm">
+              <div className="flex h-24 w-24 items-center justify-center rounded-3xl bg-white/10 text-white shadow-inner backdrop-blur-sm">
                 <UserIcon className="h-12 w-12" />
               </div>
               <div className="space-y-6">
                 <div>
-                  <h1 className="text-4xl font-bold tracking-tight md:text-5xl">{profileData.profile.name}</h1>
-                  <p className="mt-3 text-xl font-medium text-cyan-50">{profileData.profile.headline}</p>
+                  <h1 className="text-4xl font-serif font-medium tracking-tight md:text-5xl">{profileData.profile.name}</h1>
+                  <p className="mt-3 text-xl font-light text-white/90">{profileData.profile.headline}</p>
                 </div>
-                <div className="grid gap-4 text-sm font-medium text-cyan-50/90 md:grid-cols-2">
+                <div className="grid gap-4 text-sm font-medium text-white/80 md:grid-cols-2">
                   {profileData.profile.location && (
                     <div className="flex items-center gap-2.5">
                       <MapPin className="h-4.5 w-4.5" />
@@ -152,9 +152,9 @@ const Dashboard: React.FC<DashboardProps> = ({ user, parsedData, onLogout }) => 
           </div>
 
           <div className="grid gap-6">
-            <div className="rounded-[2rem] border border-slate-200/60 bg-white/80 p-8 shadow-lg shadow-blue-500/10 backdrop-blur-md transition hover:border-blue-200/50 hover:shadow-blue-500/15">
-              <p className="text-xs font-bold uppercase tracking-widest text-blue-600">Snapshot</p>
-              <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-900">Follio progress overview</h2>
+            <div className="rounded-3xl bg-surface p-8 shadow-sm ring-1 ring-primary/5 transition-all hover:shadow-md">
+              <p className="text-xs font-medium uppercase tracking-widest text-primary/50">Snapshot</p>
+              <h2 className="mt-3 text-2xl font-serif font-medium tracking-tight text-primary">Follio progress overview</h2>
               <div className="mt-8 grid gap-5 sm:grid-cols-3">
                 <div className="group rounded-3xl border border-blue-100 bg-blue-50/50 p-5 text-blue-700 transition hover:bg-blue-50">
                   <div className="text-4xl font-bold tracking-tighter text-blue-800">{profileData.experience.length}</div>
@@ -171,10 +171,10 @@ const Dashboard: React.FC<DashboardProps> = ({ user, parsedData, onLogout }) => 
               </div>
             </div>
 
-            <div className="rounded-[2rem] border border-slate-200/60 bg-white/80 p-8 shadow-lg shadow-blue-500/10 backdrop-blur-md transition hover:border-blue-200/50 hover:shadow-blue-500/15">
-              <h3 className="text-xl font-bold tracking-tight text-slate-900">Next steps to launch</h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-slate-600">Complete these finishing touches to publish your Follio with confidence.</p>
-              <div className="mt-6 space-y-4 text-sm font-medium text-slate-600">
+            <div className="rounded-3xl bg-surface p-8 shadow-sm ring-1 ring-primary/5 transition-all hover:shadow-md">
+              <h3 className="text-xl font-serif font-medium tracking-tight text-primary">Next steps to launch</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-primary/60">Complete these finishing touches to publish your Follio with confidence.</p>
+              <div className="mt-6 space-y-4 text-sm font-medium text-primary/60">
                 <div className="flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50/50 p-3 transition hover:bg-slate-50">
                   <span className="h-2.5 w-2.5 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(59,130,246,0.6)]" />
                   Add project imagery and testimonials for visual impact.

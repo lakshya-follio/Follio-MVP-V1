@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import type { Session, User as SupabaseUser } from '@supabase/supabase-js';
 import LoginPage from './components/LoginPage';
-import UploadPage from './components/UploadPage';
+import HomePage from './components/HomePage';
 import ParsedInfoPage from './components/ParsedInfoPage';
 import Dashboard from './components/Dashboard';
 import { LoadingSpinner } from './components/ui/LoadingSpinner';
 import { Toaster } from './components/ui/Toaster';
 import { supabase, isSupabaseConfigured } from './utils/supabaseClient';
-import { parseResumeFile } from './utils/resumeParser';
+import { parseResumeFile, getDummyResumeData } from './utils/resumeParser';
 
 export interface User {
   id: string;
@@ -42,9 +42,10 @@ export interface ParsedResumeData {
 }
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'login' | 'upload' | 'parsed' | 'dashboard'>('login');
+  const [currentPage, setCurrentPage] = useState<'home' | 'login' | 'parsed' | 'dashboard'>('home');
   const [user, setUser] = useState<User | null>(null);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [pendingFile, setPendingFile] = useState<File | null>(null);
   const [parsedData, setParsedData] = useState<ParsedResumeData | null>(null);
   const [loading, setLoading] = useState(true);
   const [configError, setConfigError] = useState<string | null>(null);
@@ -102,10 +103,8 @@ function App() {
       if (resumeData) {
         setParsedData(resumeData);
         setCurrentPage('dashboard');
-      } else {
-        setParsedData(null);
-        setCurrentPage('upload');
       }
+      // Note: We don't force 'upload' here if no data, to respect the initial state or pending actions
     };
 
     const bootstrapSession = async () => {
@@ -138,7 +137,8 @@ function App() {
       if (event === 'SIGNED_OUT' || !session?.user) {
         setUser(null);
         setParsedData(null);
-        setCurrentPage('login');
+        // Don't redirect to login on sign out, let them browse
+        setCurrentPage('home');
         return;
       }
 
@@ -153,12 +153,28 @@ function App() {
             return;
           }
 
+          // If there's a pending file to process, handle it first
+          if (pendingFile) {
+            try {
+              const parsed = await parseResumeFile(pendingFile);
+              setUploadedFile(pendingFile);
+              setParsedData(parsed);
+              setPendingFile(null);
+              setCurrentPage('parsed');
+              return; // Exit early since we're going to parsed page
+            } catch (parseError) {
+              console.error('Resume parsing failed:', parseError);
+              setPendingFile(null);
+              // Fall through to normal logic
+            }
+          }
+
           if (resumeData) {
             setParsedData(resumeData);
             setCurrentPage('dashboard');
           } else {
-            setParsedData(null);
-            setCurrentPage('upload');
+            // No existing resume data and no pending file - stay on upload/home page
+            setCurrentPage('home');
           }
         } catch (profileError) {
           console.error('Profile fetch error:', profileError);
@@ -178,11 +194,27 @@ function App() {
   }, []);
 
   const handleLogin = (userData: User) => {
-    setUser(userData);
-    setCurrentPage('upload');
+    // The auth listener will handle setting the user and fetching data
+    // We just need to ensure the pending file is available for the listener to process
+    // Don't manually set user or redirect here - let the auth listener handle it
+  };
+
+  const handleDemoLoad = () => {
+    const dummyData = getDummyResumeData();
+    setParsedData(dummyData);
+    // Create a dummy file object for display purposes
+    const dummyFile = new File([''], 'demo-resume.pdf', { type: 'application/pdf' });
+    setUploadedFile(dummyFile);
+    setCurrentPage('parsed');
   };
 
   const handleUpload = async (file: File) => {
+    if (!user) {
+      setPendingFile(file);
+      setCurrentPage('login');
+      return;
+    }
+
     try {
       const parsed = await parseResumeFile(file);
       setUploadedFile(file);
@@ -242,12 +274,12 @@ function App() {
     setUser(null);
     setUploadedFile(null);
     setParsedData(null);
-    setCurrentPage('login');
+    setCurrentPage('home');
   };
 
   if (configError) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-sky-100 p-6 text-center">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-secondary p-6 text-center">
         <div className="max-w-xl rounded-3xl border border-red-200/60 bg-white/90 p-10 shadow-xl shadow-red-200/30 backdrop-blur">
           <h1 className="text-2xl font-semibold text-red-600">Configuration required</h1>
           <p className="mt-4 text-sm text-slate-600">{configError}</p>
@@ -262,26 +294,33 @@ function App() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-50 via-white to-sky-100">
+      <div className="flex min-h-screen items-center justify-center bg-secondary">
         <LoadingSpinner size="large" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-sky-100">
+    <div className="min-h-screen bg-secondary text-primary font-sans selection:bg-accent/30">
       {currentPage === 'login' && (
         <LoginPage
           onLogin={handleLogin}
         />
       )}
-      {currentPage === 'upload' && <UploadPage onUpload={handleUpload} user={user} />}
+      {currentPage === 'home' && (
+        <HomePage
+          onUpload={handleUpload}
+          onDemoLoad={handleDemoLoad}
+          user={user}
+          onLoginClick={() => setCurrentPage('login')}
+        />
+      )}
       {currentPage === 'parsed' && (
         <ParsedInfoPage
           uploadedFile={uploadedFile}
           initialData={parsedData}
           onSave={handleSave}
-          onBack={() => setCurrentPage('upload')}
+          onBack={() => setCurrentPage('home')}
         />
       )}
       {currentPage === 'dashboard' && (
