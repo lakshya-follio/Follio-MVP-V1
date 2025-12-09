@@ -93,25 +93,25 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user }) => {
   ) : null;
 
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-br from-[#F4FBFF] via-white to-[#E9F5FF] text-slate-900">
+    <div className="flex min-h-screen flex-col bg-gradient-to-br from-blue-50 via-white to-sky-100 text-slate-900">
       <BrandHeader subdued action={headerAction} />
       <main className="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-16 px-6 py-24">
         <section className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div className="space-y-8">
-            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/60 bg-cyan-50/50 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-cyan-700 shadow-sm ring-1 ring-cyan-100/50">
+            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/60 bg-blue-50/50 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-blue-700 shadow-sm ring-1 ring-blue-100/50">
               Step 1 of 3 · Upload
             </span>
             <div className="space-y-6">
               <h1 className="text-4xl font-bold leading-tight tracking-tight text-slate-900 md:text-5xl">
-                Upload your resume to craft your <span className="bg-gradient-to-r from-cyan-500 via-teal-500 to-indigo-500 bg-clip-text text-transparent">Follio presence</span>
+                Upload your resume to craft your <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-500 bg-clip-text text-transparent">Follio presence</span>
               </h1>
               <p className="max-w-xl text-lg leading-relaxed text-slate-600">
                 Drop in your latest resume and we will translate it into a polished, on-brand digital portfolio. Keep your story consistent across every touchpoint.
               </p>
             </div>
             <div className="grid gap-5 sm:grid-cols-2">
-              <div className="group rounded-3xl border border-slate-200/60 bg-white/60 p-6 shadow-lg shadow-cyan-500/5 backdrop-blur-md transition hover:border-cyan-200/60 hover:bg-white hover:shadow-xl hover:shadow-cyan-500/10">
-                <div className="mb-4 inline-flex items-center gap-2.5 rounded-full bg-cyan-100/50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-cyan-700 group-hover:bg-cyan-100">
+              <div className="group rounded-3xl border border-slate-200/60 bg-white/60 p-6 shadow-lg shadow-blue-500/10 backdrop-blur-md transition hover:border-blue-200/60 hover:bg-white hover:shadow-xl hover:shadow-blue-500/15">
+                <div className="mb-4 inline-flex items-center gap-2.5 rounded-full bg-blue-100/50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-blue-700 group-hover:bg-blue-100">
                   <Upload className="h-3.5 w-3.5" />
                   Smart import
                 </div>
@@ -149,21 +149,21 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user }) => {
             </div>
           </div>
 
-          <div className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 p-10 shadow-2xl shadow-cyan-500/10 backdrop-blur-md">
+          <div className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 p-10 shadow-2xl shadow-blue-500/15 backdrop-blur-md">
             <div className="mb-8 flex items-center justify-between">
               <div>
                 <h2 className="text-2xl font-bold tracking-tight text-slate-900">Upload resume</h2>
                 <p className="mt-1 text-sm font-medium text-slate-500">PDF or DOCX · up to 10MB</p>
               </div>
-              <div className="rounded-full bg-cyan-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-cyan-700 ring-1 ring-cyan-100">
+              <div className="rounded-full bg-blue-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-blue-700 ring-1 ring-blue-100">
                 Auto-parse enabled
               </div>
             </div>
             {!uploadedFile ? (
               <div
                 className={`group relative overflow-hidden rounded-3xl border-2 border-dashed p-12 text-center transition-all duration-300 ${dragActive
-                    ? 'border-cyan-400 bg-cyan-50/50 scale-[1.02]'
-                    : 'border-slate-200/80 hover:border-cyan-300 hover:bg-slate-50/50'
+                  ? 'border-blue-400 bg-blue-50/50 scale-[1.02]'
+                  : 'border-slate-200/80 hover:border-blue-300 hover:bg-slate-50/50'
                   }`}
                 onDragEnter={handleDrag}
                 onDragLeave={handleDrag}
@@ -173,8 +173,8 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user }) => {
                 <div className="relative z-10 flex flex-col items-center gap-6">
                   <div
                     className={`rounded-2xl p-5 transition-all duration-300 ${dragActive
-                        ? 'bg-cyan-100 text-cyan-600 scale-110 shadow-lg shadow-cyan-500/20'
-                        : 'bg-slate-100 text-slate-400 group-hover:bg-cyan-50 group-hover:text-cyan-500 group-hover:scale-110'
+                      ? 'bg-blue-100 text-blue-600 scale-110 shadow-lg shadow-blue-500/20'
+                      : 'bg-slate-100 text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-500 group-hover:scale-110'
                       }`}
                   >
                     <Upload className="h-10 w-10" />
@@ -183,7 +183,7 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user }) => {
                     <h3 className="text-xl font-bold text-slate-900">Drag and drop your resume</h3>
                     <p className="mt-2 text-sm font-medium text-slate-500">or click below to choose a file from your device</p>
                   </div>
-                  <label className="inline-flex cursor-pointer items-center gap-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-cyan-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-cyan-500/40 active:scale-95">
+                  <label className="inline-flex cursor-pointer items-center gap-2.5 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/40 active:scale-95">
                     <Upload className="h-4 w-4" />
                     Choose file
                     <input
@@ -226,7 +226,7 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user }) => {
                 <button
                   onClick={processUpload}
                   disabled={uploading}
-                  className="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 px-8 py-4 text-base font-bold text-white shadow-lg shadow-cyan-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-cyan-500/40 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+                  className="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-8 py-4 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/40 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
                 >
                   {uploading ? (
                     <>
@@ -252,10 +252,10 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user }) => {
           </div>
         </section>
 
-        <section className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 p-12 shadow-lg shadow-cyan-500/5 backdrop-blur-md">
+        <section className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 p-12 shadow-lg shadow-blue-500/10 backdrop-blur-md">
           <div className="grid gap-10 md:grid-cols-3">
             <div className="space-y-4 text-center md:text-left">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-50 text-cyan-600 shadow-sm ring-1 ring-cyan-100 md:mx-0">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 shadow-sm ring-1 ring-blue-100 md:mx-0">
                 <Upload className="h-6 w-6" />
               </div>
               <h3 className="text-xl font-bold text-slate-900">Smart parsing</h3>

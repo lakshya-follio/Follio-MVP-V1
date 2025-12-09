@@ -202,7 +202,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, initialDa
       <button
         onClick={handleSave}
         disabled={loading || !parsedData}
-        className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-cyan-500/30 transition hover:-translate-y-0.5 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:-translate-y-0.5 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60"
       >
         <Save className="h-4 w-4" />
         Save profile
@@ -212,11 +212,11 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, initialDa
 
   if (loading) {
     return (
-      <div className="flex min-h-screen flex-col bg-gradient-to-br from-[#F4FBFF] via-white to-[#E9F5FF]">
+      <div className="flex min-h-screen flex-col bg-gradient-to-br from-blue-50 via-white to-sky-100">
         <BrandHeader subdued action={headerAction} />
         <div className="flex flex-1 items-center justify-center px-4 py-16">
-          <div className="rounded-3xl border border-slate-200/70 bg-white/80 p-10 text-center shadow-lg shadow-cyan-500/10">
-            <div className="mx-auto mb-4 h-16 w-16 animate-spin rounded-full border-4 border-cyan-500 border-t-transparent" />
+          <div className="rounded-3xl border border-slate-200/70 bg-white/80 p-10 text-center shadow-lg shadow-blue-500/15">
+            <div className="mx-auto mb-4 h-16 w-16 animate-spin rounded-full border-4 border-blue-500 border-t-transparent" />
             <h2 className="text-xl font-semibold text-slate-900">Parsing your resume...</h2>
             <p className="mt-2 text-sm text-slate-500">We are preparing your Follio content blueprint.</p>
           </div>
@@ -228,15 +228,15 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, initialDa
 
   if (!parsedData) {
     return (
-      <div className="flex min-h-screen flex-col bg-gradient-to-br from-[#F4FBFF] via-white to-[#E9F5FF]">
+      <div className="flex min-h-screen flex-col bg-gradient-to-br from-blue-50 via-white to-sky-100">
         <BrandHeader subdued action={headerAction} />
         <div className="flex flex-1 items-center justify-center px-4 py-16">
-          <div className="max-w-md rounded-3xl border border-slate-200/70 bg-white/80 p-10 text-center shadow-lg shadow-cyan-500/10">
+          <div className="max-w-md rounded-3xl border border-slate-200/70 bg-white/80 p-10 text-center shadow-lg shadow-blue-500/15">
             <h2 className="text-2xl font-semibold text-slate-900">We could not parse that file</h2>
             <p className="mt-3 text-sm text-slate-600">Please verify the format and try uploading again.</p>
             <button
               onClick={onBack}
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-500/30 transition hover:-translate-y-0.5 hover:shadow-xl"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:-translate-y-0.5 hover:shadow-xl"
             >
               Try another file
             </button>
@@ -248,13 +248,13 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, initialDa
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-br from-[#F4FBFF] via-white to-[#E9F5FF] text-slate-900">
+    <div className="flex min-h-screen flex-col bg-gradient-to-br from-blue-50 via-white to-sky-100 text-slate-900">
       <BrandHeader subdued action={headerAction} />
       <main className="mx-auto w-full max-w-7xl flex-1 px-6 py-24">
         <section className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="space-y-8">
-            <div className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 p-10 shadow-xl shadow-cyan-500/5 backdrop-blur-md">
-              <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/60 bg-cyan-50/50 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-cyan-700 shadow-sm ring-1 ring-cyan-100/50">
+            <div className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 p-10 shadow-xl shadow-blue-500/10 backdrop-blur-md">
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/60 bg-blue-50/50 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-blue-700 shadow-sm ring-1 ring-blue-100/50">
                 <Sparkles className="h-3.5 w-3.5" />
                 Step 2 of 3 · Review & edit
               </span>
@@ -265,7 +265,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, initialDa
               <div className="mt-8 rounded-3xl border border-slate-200/60 bg-slate-50/50 p-6">
                 <div className="flex items-center justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-100/50 text-cyan-600 shadow-sm">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-100/50 text-blue-600 shadow-sm">
                       <FileText className="h-6 w-6" />
                     </div>
                     <div>
@@ -277,7 +277,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, initialDa
                   </div>
                   <button
                     onClick={handleSave}
-                    className="hidden items-center gap-2 rounded-full border border-cyan-200 bg-cyan-50 px-4 py-2 text-xs font-bold uppercase tracking-wide text-cyan-700 transition hover:bg-cyan-100 lg:inline-flex"
+                    className="hidden items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-bold uppercase tracking-wide text-blue-700 transition hover:bg-blue-100 lg:inline-flex"
                   >
                     <Save className="h-3.5 w-3.5" />
                     Save progress
@@ -286,7 +286,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, initialDa
               </div>
             </div>
 
-            <div className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 p-10 shadow-xl shadow-cyan-500/5 backdrop-blur-md">
+            <div className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 p-10 shadow-xl shadow-blue-500/10 backdrop-blur-md">
               <h2 className="text-xl font-bold text-slate-900">Resume preview</h2>
               <p className="mt-2 text-sm font-medium text-slate-600">A live preview of your uploaded resume will appear here.</p>
               <div className="mt-6 rounded-3xl border border-slate-200 bg-slate-50/50 p-12 text-center">
@@ -298,7 +298,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, initialDa
           </div>
 
           <div className="space-y-8">
-            <div className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 shadow-xl shadow-cyan-500/5 backdrop-blur-md transition hover:shadow-2xl hover:shadow-cyan-500/10">
+            <div className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 shadow-xl shadow-blue-500/10 backdrop-blur-md transition hover:shadow-2xl hover:shadow-blue-500/15">
               <button
                 onClick={() => toggleSection('profile')}
                 className="flex w-full items-center justify-between rounded-[2.5rem] p-8 text-left transition hover:bg-slate-50/50"
@@ -366,7 +366,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, initialDa
               )}
             </div>
 
-            <div className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 shadow-xl shadow-cyan-500/5 backdrop-blur-md transition hover:shadow-2xl hover:shadow-cyan-500/10">
+            <div className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 shadow-xl shadow-blue-500/10 backdrop-blur-md transition hover:shadow-2xl hover:shadow-blue-500/15">
               <button
                 onClick={() => toggleSection('experience')}
                 className="flex w-full items-center justify-between rounded-[2.5rem] p-8 text-left transition hover:bg-slate-50/50"
@@ -384,7 +384,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, initialDa
                   {parsedData.experience.map((exp, index) => (
                     <div key={exp.id} className="rounded-3xl border border-slate-200 bg-slate-50/50 p-6 transition hover:bg-white hover:shadow-lg hover:shadow-slate-200/50">
                       <div className="mb-5 flex items-center justify-between">
-                        <h3 className="text-xs font-bold uppercase tracking-wide text-cyan-700 bg-cyan-50 px-3 py-1 rounded-full ring-1 ring-cyan-100">
+                        <h3 className="text-xs font-bold uppercase tracking-wide text-blue-700 bg-blue-50 px-3 py-1 rounded-full ring-1 ring-blue-100">
                           Experience #{index + 1}
                         </h3>
                         <button
@@ -438,7 +438,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, initialDa
                   ))}
                   <button
                     onClick={addExperience}
-                    className="inline-flex items-center gap-2.5 rounded-full border border-cyan-200 bg-cyan-50 px-6 py-3 text-sm font-bold text-cyan-700 transition hover:bg-cyan-100 hover:shadow-sm"
+                    className="inline-flex items-center gap-2.5 rounded-full border border-blue-200 bg-blue-50 px-6 py-3 text-sm font-bold text-blue-700 transition hover:bg-blue-100 hover:shadow-sm"
                   >
                     <Plus className="h-4 w-4" />
                     Add experience
@@ -447,7 +447,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, initialDa
               )}
             </div>
 
-            <div className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 shadow-xl shadow-cyan-500/5 backdrop-blur-md transition hover:shadow-2xl hover:shadow-cyan-500/10">
+            <div className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 shadow-xl shadow-blue-500/10 backdrop-blur-md transition hover:shadow-2xl hover:shadow-blue-500/15">
               <button
                 onClick={() => toggleSection('education')}
                 className="flex w-full items-center justify-between rounded-[2.5rem] p-8 text-left transition hover:bg-slate-50/50"
@@ -526,7 +526,7 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, initialDa
               )}
             </div>
 
-            <div className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 shadow-xl shadow-cyan-500/5 backdrop-blur-md transition hover:shadow-2xl hover:shadow-cyan-500/10">
+            <div className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 shadow-xl shadow-blue-500/10 backdrop-blur-md transition hover:shadow-2xl hover:shadow-blue-500/15">
               <button
                 onClick={() => toggleSection('skills')}
                 className="flex w-full items-center justify-between rounded-[2.5rem] p-8 text-left transition hover:bg-slate-50/50"
@@ -569,11 +569,11 @@ const ParsedInfoPage: React.FC<ParsedInfoPageProps> = ({ uploadedFile, initialDa
                           handleAddSkillFromInput();
                         }
                       }}
-                      className="flex-1 rounded-2xl border border-slate-200 bg-slate-50/50 px-5 py-3 text-sm font-medium text-slate-900 outline-none transition focus:border-indigo-400 focus:bg-white focus:ring-4 focus:ring-indigo-100"
+                      className="flex-1 rounded-2xl border border-slate-200 bg-slate-50/50 px-5 py-3 text-sm font-medium text-slate-900 outline-none transition focus:border-blue-400 focus:bg-white focus:ring-4 focus:ring-blue-100"
                     />
                     <button
                       onClick={handleAddSkillFromInput}
-                      className="inline-flex items-center gap-2.5 rounded-full border border-indigo-200 bg-indigo-50 px-6 py-3 text-sm font-bold text-indigo-700 transition hover:bg-indigo-100 hover:shadow-sm"
+                      className="inline-flex items-center gap-2.5 rounded-full border border-blue-200 bg-blue-50 px-6 py-3 text-sm font-bold text-blue-700 transition hover:bg-blue-100 hover:shadow-sm"
                     >
                       <Plus className="h-4 w-4" />
                       Add skill

@@ -104,7 +104,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F5FBFF] via-white to-[#ECF8FF] text-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-sky-100 text-slate-900">
       <BrandHeader subdued action={headerAction} />
 
       <main className="max-w-7xl mx-auto px-6">
@@ -116,7 +116,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             </span>
             <h1 className="mt-8 text-5xl font-bold leading-tight tracking-tight text-slate-900 md:text-7xl">
               Create Stunning Digital <br />
-              <span className="bg-gradient-to-r from-cyan-500 via-teal-500 to-indigo-500 bg-clip-text text-transparent">Portfolios Effortlessly</span>
+              <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-500 bg-clip-text text-transparent">Portfolios Effortlessly</span>
             </h1>
             <p className="mt-8 text-xl leading-relaxed text-slate-600 md:text-2xl md:leading-relaxed max-w-2xl mx-auto">
               Follio helps individuals and businesses launch beautiful, customizable portfolios in minutes. No coding, just smart layouts crafted for you.
@@ -124,7 +124,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             <div className="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row">
               <button
                 onClick={scrollToAuth}
-                className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 px-8 py-4 text-lg font-bold text-white shadow-lg shadow-cyan-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-cyan-500/40 active:scale-95"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-8 py-4 text-lg font-bold text-white shadow-lg shadow-blue-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/40 active:scale-95"
               >
                 Build your portfolio
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -142,9 +142,9 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             {[{ icon: Layers, title: 'AI-Driven', description: 'Let Follio transform your content into a polished digital portfolio that reflects your brand.' }, { icon: Palette, title: 'Drag-and-Drop Simplicity', description: 'Choose layouts, tweak sections, and launch faster with intuitive tools.' }, { icon: Globe, title: 'Branded Customization', description: 'Match your colors, fonts, and voice to create a cohesive online presence.' }].map((feature) => (
               <div
                 key={feature.title}
-                className="group rounded-[2rem] border border-slate-200/60 bg-white/60 p-8 text-left shadow-lg shadow-slate-200/50 backdrop-blur-sm transition-all hover:border-cyan-200/50 hover:bg-white hover:shadow-xl hover:shadow-cyan-500/5 hover:-translate-y-1"
+                className="group rounded-[2rem] border border-slate-200/60 bg-white/60 p-8 text-left shadow-lg shadow-slate-200/50 backdrop-blur-sm transition-all hover:border-blue-200/50 hover:bg-white hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1"
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-50 to-teal-50 text-cyan-600 shadow-inner shadow-cyan-100/50 group-hover:scale-110 transition-transform duration-300">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-50 to-sky-50 text-blue-600 shadow-inner shadow-blue-100/50 group-hover:scale-110 transition-transform duration-300">
                   <feature.icon className="w-7 h-7" />
                 </div>
                 <h3 className="mt-6 text-xl font-bold text-slate-900">{feature.title}</h3>
@@ -164,8 +164,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
 
           <div className="mt-16 grid gap-8 md:grid-cols-3">
             {[{ icon: UploadCloud, title: 'Upload Your Content', description: 'Drop your resume, copy, or assets into Follio. Our parser structures everything instantly.' }, { icon: Wand2, title: 'Let Follio Handle Design', description: 'AI suggests layouts, sections, and messaging that highlights what makes you unique.' }, { icon: Globe, title: 'Publish in Minutes', description: 'Launch a responsive, shareable site with custom domains and analytics built in.' }].map((item) => (
-              <div key={item.title} className="group rounded-3xl bg-gradient-to-br from-slate-50 to-white p-8 text-left border border-slate-100 transition-all hover:border-cyan-100 hover:shadow-lg hover:shadow-cyan-500/5">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-cyan-600 shadow-sm ring-1 ring-slate-100 group-hover:scale-110 transition-transform duration-300">
+              <div key={item.title} className="group rounded-3xl bg-gradient-to-br from-slate-50 to-white p-8 text-left border border-slate-100 transition-all hover:border-blue-100 hover:shadow-lg hover:shadow-blue-500/10">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-blue-600 shadow-sm ring-1 ring-slate-100 group-hover:scale-110 transition-transform duration-300">
                   <item.icon className="w-7 h-7" />
                 </div>
                 <h3 className="mt-6 text-xl font-bold text-slate-900">{item.title}</h3>
@@ -177,16 +177,16 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
 
         <section id="auth-section" className="py-32">
           <div className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr] items-center">
-            <div className="rounded-[2.5rem] bg-gradient-to-br from-cyan-500 via-teal-500 to-indigo-500 p-12 text-white shadow-2xl shadow-cyan-500/20 ring-1 ring-white/20">
+            <div className="rounded-[2.5rem] bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-500 p-12 text-white shadow-2xl shadow-blue-500/30 ring-1 ring-white/20">
               <h2 className="text-4xl font-bold leading-tight tracking-tight md:text-5xl">Ready to build your digital presence?</h2>
-              <p className="mt-6 text-lg leading-relaxed text-cyan-50">
+              <p className="mt-6 text-lg leading-relaxed text-blue-50">
                 Get started with Follio and launch your professional portfolio in minutes. Sign in to continue designing, or create an account to unlock AI-crafted experiences tailored to you.
               </p>
               <div className="mt-10 grid gap-6 md:grid-cols-2">
                 {[{ title: 'Smart personalization', description: 'Follio adapts layouts based on your industry and goals.' }, { title: 'Collaborative workflow', description: 'Invite clients or teammates to review and approve updates fast.' }, { title: 'Built-in analytics', description: 'Track engagement and understand how your portfolio performs.' }, { title: 'Seamless publishing', description: 'Connect your domain and go live with confidence.' }].map((benefit) => (
                   <div key={benefit.title} className="rounded-3xl bg-white/10 p-6 backdrop-blur-sm border border-white/10 transition hover:bg-white/15">
                     <h3 className="text-lg font-bold">{benefit.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-cyan-50">{benefit.description}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-blue-50">{benefit.description}</p>
                   </div>
                 ))}
               </div>
@@ -247,12 +247,12 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                 <div>
                   <label className="mb-2 block text-sm font-bold text-slate-700">Email</label>
                   <div className="relative group">
-                    <Mail className="pointer-events-none absolute left-4 top-4 h-5 w-5 text-slate-400 transition group-focus-within:text-cyan-500" />
+                    <Mail className="pointer-events-none absolute left-4 top-4 h-5 w-5 text-slate-400 transition group-focus-within:text-blue-500" />
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-12 py-4 text-sm font-medium text-slate-900 outline-none transition-all focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/10"
+                      className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-12 py-4 text-sm font-medium text-slate-900 outline-none transition-all focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10"
                       placeholder="Enter your email"
                       required
                     />
@@ -265,7 +265,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-medium text-slate-900 outline-none transition-all focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/10"
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-6 py-4 text-sm font-medium text-slate-900 outline-none transition-all focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10"
                     placeholder="Enter your password"
                     required
                     minLength={6}
@@ -275,7 +275,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-cyan-500 to-teal-500 px-6 py-4 text-[15px] font-bold text-white shadow-lg shadow-cyan-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-cyan-500/40 active:scale-95 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 px-6 py-4 text-[15px] font-bold text-white shadow-lg shadow-blue-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/40 active:scale-95 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {loading ? (
                     <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
@@ -291,7 +291,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
               <div className="mt-8 text-center text-sm">
                 <button
                   onClick={() => setIsLogin(!isLogin)}
-                  className="font-bold text-cyan-600 transition hover:text-cyan-700 hover:underline decoration-2 underline-offset-4"
+                  className="font-bold text-blue-600 transition hover:text-blue-700 hover:underline decoration-2 underline-offset-4"
                 >
                   {isLogin ? "Don't have an account? Sign up" : 'Already have an account? Sign in'}
                 </button>
