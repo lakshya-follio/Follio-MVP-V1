@@ -134,11 +134,16 @@ function App() {
     const { data: authSubscription } = client.auth.onAuthStateChange(async (event, session) => {
       if (!isMounted) return;
 
-      if (event === 'SIGNED_OUT' || !session?.user) {
+      if (event === 'SIGNED_OUT') {
         setUser(null);
         setParsedData(null);
-        // Don't redirect to login on sign out, let them browse
         setCurrentPage('home');
+        return;
+      }
+
+      if (!session?.user) {
+        setUser(null);
+        // Do not clear parsedData or reset page here - let guest mode persist
         return;
       }
 
