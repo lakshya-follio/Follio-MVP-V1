@@ -153,7 +153,7 @@ function App() {
             return;
           }
 
-          // If there's a pending file to process, handle it first
+          // Case 1: Pending File (User tried to upload via drag-drop on Login page or was redirected)
           if (pendingFile) {
             try {
               const parsed = await parseResumeFile(pendingFile);
@@ -165,10 +165,21 @@ function App() {
             } catch (parseError) {
               console.error('Resume parsing failed:', parseError);
               setPendingFile(null);
-              // Fall through to normal logic
             }
           }
 
+          // Case 2: Guest Data Exists (User acted as guest, then logged in)
+          // We assume if parsedData is not null, it's fresh from the current session/demo
+          // We prioritize this over DB data so they can save/merge it.
+          // BUT we only stay on 'parsed' if that's where they were coming from, or redirect there.
+          if (parsedData) {
+            // User has guest data. We should probably let them Review & Save it.
+            // The user specifically asked for "the parsing page".
+            setCurrentPage('parsed');
+            return;
+          }
+
+          // Case 3: Load from DB or Default
           if (resumeData) {
             setParsedData(resumeData);
             setCurrentPage('dashboard');
@@ -191,12 +202,10 @@ function App() {
       isMounted = false;
       authSubscription?.subscription.unsubscribe();
     };
-  }, []);
+  }, [pendingFile, parsedData]); // Added parsedData dependency to ensure effect sees latest state
 
   const handleLogin = (userData: User) => {
     // The auth listener will handle setting the user and fetching data
-    // We just need to ensure the pending file is available for the listener to process
-    // Don't manually set user or redirect here - let the auth listener handle it
   };
 
   const handleDemoLoad = () => {
@@ -209,12 +218,7 @@ function App() {
   };
 
   const handleUpload = async (file: File) => {
-    if (!user) {
-      setPendingFile(file);
-      setCurrentPage('login');
-      return;
-    }
-
+    // Guest Mode: Allow upload/parsing without login
     try {
       const parsed = await parseResumeFile(file);
       setUploadedFile(file);
@@ -229,8 +233,17 @@ function App() {
     }
   };
 
+  const handleLoginRequest = () => {
+    // Helper to send guest to login page
+    setCurrentPage('login');
+  };
+
   const handleSave = async (data: ParsedResumeData) => {
+    // If guest tries to save, send them to login
+    // We update parsedData state first so it persists through the transition
     if (!user) {
+      setParsedData(data);
+      setCurrentPage('login');
       return;
     }
 
@@ -328,6 +341,7 @@ function App() {
           user={user}
           parsedData={parsedData}
           onLogout={handleLogout}
+          onLoginRequest={handleLoginRequest}
         />
       )}
       <Toaster />
