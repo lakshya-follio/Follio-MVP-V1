@@ -193,7 +193,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, parsedData, onLogout }) => 
         </section>
 
         <section className="mt-16 grid gap-10 lg:grid-cols-2">
-          <div className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 p-10 shadow-xl shadow-cyan-500/5 backdrop-blur-md">
+          <div className="rounded-[2.5rem] border border-slate-200/60 bg-white/80 p-10 shadow-xl shadow-blue-500/10 backdrop-blur-md">
             <div className="flex items-center justify-between">
               <h3 className="text-2xl font-bold tracking-tight text-slate-900">Work experience</h3>
               <span className="rounded-full bg-blue-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-blue-700 ring-1 ring-blue-100">
