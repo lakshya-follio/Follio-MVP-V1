@@ -114,7 +114,7 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user, onLoginRequest 
             </span>
             <div className="space-y-6">
               <h1 className="text-4xl font-bold leading-tight tracking-tight text-slate-900 md:text-5xl">
-                Upload your resume to craft your <span className="bg-gradient-to-r from-blue-600 via-sky-500 to-blue-500 bg-clip-text text-transparent">Follio presence</span>
+                Upload your resume to craft your <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-500 bg-clip-text text-transparent">Follio presence</span>
               </h1>
               <p className="max-w-xl text-lg leading-relaxed text-slate-600">
                 Drop in your latest resume and we will translate it into a polished, on-brand digital portfolio. Keep your story consistent across every touchpoint.
@@ -194,7 +194,7 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user, onLoginRequest 
                     <h3 className="text-xl font-bold text-slate-900">Drag and drop your resume</h3>
                     <p className="mt-2 text-sm font-medium text-slate-500">or click below to choose a file from your device</p>
                   </div>
-                  <label className="inline-flex cursor-pointer items-center gap-2.5 rounded-full bg-gradient-to-r from-blue-600 to-sky-500 px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/40 active:scale-95">
+                  <label className="inline-flex cursor-pointer items-center gap-2.5 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/40 active:scale-95">
                     <Upload className="h-4 w-4" />
                     Choose file
                     <input
@@ -237,7 +237,7 @@ const UploadPage: React.FC<UploadPageProps> = ({ onUpload, user, onLoginRequest 
                 <button
                   onClick={processUpload}
                   disabled={uploading}
-                  className="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-blue-600 to-sky-500 px-8 py-4 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/40 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+                  className="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-8 py-4 text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/40 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
                 >
                   {uploading ? (
                     <>
