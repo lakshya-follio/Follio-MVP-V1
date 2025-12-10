@@ -215,43 +215,43 @@ const HomePage: React.FC<HomePageProps> = ({ onUpload, onDemoLoad, user, onLogin
                                 </div>
                             </div>
                             {!uploadedFile ? (
-                                <div
-                                    className={`group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed p-12 text-center transition-all duration-300 ${dragActive
-                                        ? 'border-blue-400 bg-blue-50/50 scale-[1.02]'
-                                        : 'border-slate-200/80 hover:border-blue-300 hover:bg-slate-50/50'
-                                        }`}
-                                    onDragEnter={handleDrag}
-                                    onDragLeave={handleDrag}
-                                    onDragOver={handleDrag}
-                                    onDrop={handleDrop}
-                                >
-                                    <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 shadow-sm ring-1 ring-blue-100 transition-transform group-hover:scale-110">
-                                        <Upload className="h-8 w-8" />
-                                    </div>
-                                    <h3 className="text-lg font-bold text-slate-900">Drag and drop your resume</h3>
-                                    <p className="mt-2 text-sm font-medium text-slate-500">or click to browse</p>
-                                    <p className="mt-2 text-xs font-medium text-slate-400">PDF, DOCX up to 10MB</p>
-
-
-
-                                    <label className="absolute inset-0 cursor-pointer">
-                                        <input
-                                            type="file"
-                                            className="hidden"
-                                            accept=".pdf,.docx,.doc"
-                                            onChange={handleFileInput}
-                                        />
-                                    </label>
-                                </div>
-                                <div className="mt-4 text-center">
-                                    <button
-                                        type="button"
-                                        onClick={onDemoLoad}
-                                        className="text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors hover:underline"
+                                <>
+                                    <div
+                                        className={`group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed p-12 text-center transition-all duration-300 ${dragActive
+                                            ? 'border-blue-400 bg-blue-50/50 scale-[1.02]'
+                                            : 'border-slate-200/80 hover:border-blue-300 hover:bg-slate-50/50'
+                                            }`}
+                                        onDragEnter={handleDrag}
+                                        onDragLeave={handleDrag}
+                                        onDragOver={handleDrag}
+                                        onDrop={handleDrop}
                                     >
-                                        Try with demo data
-                                    </button>
-                                </div>
+                                        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 shadow-sm ring-1 ring-blue-100 transition-transform group-hover:scale-110">
+                                            <Upload className="h-8 w-8" />
+                                        </div>
+                                        <h3 className="text-lg font-bold text-slate-900">Drag and drop your resume</h3>
+                                        <p className="mt-2 text-sm font-medium text-slate-500">or click to browse</p>
+                                        <p className="mt-2 text-xs font-medium text-slate-400">PDF, DOCX up to 10MB</p>
+
+                                        <label className="absolute inset-0 cursor-pointer">
+                                            <input
+                                                type="file"
+                                                className="hidden"
+                                                accept=".pdf,.docx,.doc"
+                                                onChange={handleFileInput}
+                                            />
+                                        </label>
+                                    </div>
+                                    <div className="mt-4 text-center">
+                                        <button
+                                            type="button"
+                                            onClick={onDemoLoad}
+                                            className="text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors hover:underline"
+                                        >
+                                            Try with demo data
+                                        </button>
+                                    </div>
+                                </>
                             ) : (
                                 <div className="space-y-8 text-center py-8">
                                     <div className="inline-flex items-center gap-4 rounded-3xl border border-sky-200 bg-sky-50/50 px-6 py-4 text-left">
